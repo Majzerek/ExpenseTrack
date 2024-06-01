@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 export default function App() {
 
   const [where, setWhere] = useState('');
   const [when, setWhen] = useState('');
   const [howMuch, setHowMuch] = useState('');
-  const [all, setAll] = useState([]);
+  const [all, setAll] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS",)
+    if (!localValue) return [];
 
+    return JSON.parse(localValue)
+  });
+
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(all))
+  }, [all])
+
+  
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -27,9 +37,7 @@ export default function App() {
 
   function sum(all) {
     if (!all.length) return 0;
-    if (all.length === 1) return all[0].Expense;
-    const sum = all.reduce((a, b) => a + b.Expense, 0)
-    return sum
+    return all.reduce((a, b) => a + b.Expense, 0)
   }
 
 
