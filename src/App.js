@@ -34,7 +34,9 @@ export default function App() {
     setHowMuch('')
   }
 
-
+  function clearing() {
+    setAll([])
+  }
   function sum(all) {
     if (!all.length) return 0;
     return all.reduce((a, b) => a + b.Expense, 0)
@@ -46,7 +48,8 @@ export default function App() {
     <div>
       <Form when={when} where={where} howMuch={howMuch} onHowMuch={setHowMuch} onWhen={setWhen} onWhere={setWhere} onSubmit={handleSubmit} />
       <table>
-        <caption>Your Expense in {new Date().getFullYear().toString()}</caption>
+        <caption>Your Expense in {new Date().getFullYear().toString()} <button onClick={clearing}>Clear All</button></caption>
+        
         <thead>
           <tr>
             <th>Where</th>
@@ -85,15 +88,15 @@ function Form({ when, where, howMuch, onWhere, onWhen, onHowMuch, onSubmit }) {
 
           <li>
             <label>When do you buy it?</label>
-            <input type="date" value={when} onChange={(e) => onWhen(e.target.value)} />
+            <input type="date" value={when} required onChange={(e) => onWhen(e.target.value)} />
           </li>
           <li>
             <label>Where do you was?</label>
-            <input type='text' placeholder='Writte a place' value={where} onChange={(e) => onWhere(e.target.value)} />
+            <input type='text' required placeholder='Writte a place' value={where} onChange={(e) => onWhere(e.target.value)} />
           </li>
           <li>
             <label>How much do you spend?</label>
-            <input type='number' value={howMuch} placeholder='How much in $' onChange={(e) => onHowMuch(e.target.value)} />
+            <input type='number' required value={howMuch} placeholder='How much in $' onChange={(e) => onHowMuch(e.target.value)} />
           </li>
         </ul>
         <button type='submit'>Save</button>
