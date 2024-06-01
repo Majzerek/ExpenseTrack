@@ -34,17 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "ExpenseTracer Simple Expense Tracer in React",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Majzerek/ExpenseTrack.git"
-  },
-  "author": "Majzer",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Majzerek/ExpenseTrack/issues"
-  },
-  "homepage": "https://github.com/Majzerek/ExpenseTrack#readme"
+  }
 }
