@@ -1,6 +1,12 @@
 # ExpenseTrack
 ExpenseTracer
-Simple Expense Tracer in React
+
+-Simple application in react, with localStorage.
+
+-Keep date and place where u make some expense
+
+-show all expence in one place so u can know how much you spend on unnesesery things :)
+
 
 # Getting Started with Create React App
 
