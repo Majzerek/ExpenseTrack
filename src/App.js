@@ -37,6 +37,7 @@ export default function App() {
   function clearing() {
     setAll([])
   }
+
   function sum(all) {
     if (!all.length) return 0;
     return all.reduce((a, b) => a + b.Expense, 0)
@@ -45,12 +46,12 @@ export default function App() {
 
   return (
 
-    <div>
+    <div className='app'>
       <Form when={when} where={where} howMuch={howMuch} onHowMuch={setHowMuch} onWhen={setWhen} onWhere={setWhere} onSubmit={handleSubmit} />
-      <table>
-        <caption>Your Expense in {new Date().getFullYear().toString()} <button onClick={clearing}>Clear All</button></caption>
+      <table className='table'>
+        <caption>Your Expense in {new Date().getFullYear().toString()} <button className='btn' onClick={clearing}>Clear All</button></caption>
         
-        <thead>
+        <thead >
           <tr>
             <th>Where</th>
             <th>Date</th>
@@ -74,6 +75,7 @@ export default function App() {
         </tfoot>
 
       </table > 
+      <footer>&copy; Majzerek {new Date().getFullYear()} </footer>
     </div>
   );
 }
@@ -83,23 +85,23 @@ function Form({ when, where, howMuch, onWhere, onWhen, onHowMuch, onSubmit }) {
   return (
     <div className='form'>
       <h1>Expense Tracer ... </h1>
-      <form onSubmit={onSubmit}>
-        <ul>
+      <form className='form_valid'onSubmit={onSubmit}>
 
-          <li>
-            <label>When do you buy it?</label>
+
+
+        <label>When you do purches?</label>
             <input type="date" value={when} required onChange={(e) => onWhen(e.target.value)} />
-          </li>
-          <li>
-            <label>Where do you was?</label>
+
+
+            <label>Where it was?</label>
             <input type='text' required placeholder='Writte a place' value={where} onChange={(e) => onWhere(e.target.value)} />
-          </li>
-          <li>
-            <label>How much do you spend?</label>
+
+
+            <label>How much did you spend?</label>
             <input type='number' required value={howMuch} placeholder='How much in $' onChange={(e) => onHowMuch(e.target.value)} />
-          </li>
-        </ul>
-        <button type='submit'>Save</button>
+
+
+        <button className='btn btn_submit' type='submit'>Save</button>
       </form>
     </div>
   )
