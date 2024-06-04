@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { Table, Tbody } from './Table';
 import { Form } from './Form';
 import { Inputs } from './Inputs';
-export default function App() {
+
+
+export default function App({currency = '$'}) {
 
   const [where, setWhere] = useState('');
   const [when, setWhen] = useState('');
@@ -13,7 +15,7 @@ export default function App() {
 
     return JSON.parse(localValue)
   });
-
+  
   useEffect(() => {
     localStorage.setItem("ITEMS", JSON.stringify(all))
   }, [all])
@@ -52,7 +54,7 @@ export default function App() {
         </Inputs>
       </Form>
 
-      < Table onSetAll={setAll} all={all}>
+      < Table onSetAll={setAll} all={all} currency={currency}>
         <Tbody all={all} />
       </Table>
 

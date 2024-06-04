@@ -1,4 +1,4 @@
-export function Table({ children, onSetAll, all }) {
+export function Table({ children, onSetAll, all, currency }) {
     function clearing() {
         onSetAll([]);
     }
@@ -8,12 +8,12 @@ export function Table({ children, onSetAll, all }) {
     }
     return <>
         <table className='table'>
-            <caption>Your Expense in {new Date().getFullYear().toString()} <button className='btn' onClick={clearing}>Clear All</button></caption>
+            <caption>Your Expense in {new Date().getFullYear().toString()} <button className='btn ' onClick={clearing}>Clear All</button></caption>
             <thead>
                 <tr>
                     <th>Where</th>
                     <th>Date</th>
-                    <th>Expense in $</th>
+                    <th>Expense in {currency}</th>
                 </tr>
             </thead>
             {children}

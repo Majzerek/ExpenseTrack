@@ -115,6 +115,7 @@ form ul li {
 
 .btn {
   padding:10px 20px;
+  margin-top: 10px;
   border: none;
   border-radius: 15px;
   box-shadow: 0 0 5px var(--app-box-shadow);
@@ -125,7 +126,7 @@ form ul li {
 }
 .btn_submit {
   align-self: center;
-  margin-top: 20px;
+
   width: 80px;
 }
 .btn:hover{
