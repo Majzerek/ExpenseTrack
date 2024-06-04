@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { Table, Tbody } from './Table';
+import { Form } from './Form';
+import { Inputs } from './Inputs';
 export default function App() {
 
   const [where, setWhere] = useState('');
@@ -15,7 +18,7 @@ export default function App() {
     localStorage.setItem("ITEMS", JSON.stringify(all))
   }, [all])
 
-  
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -34,75 +37,25 @@ export default function App() {
     setHowMuch('')
   }
 
-  function clearing() {
-    setAll([])
-  }
-
-  function sum(all) {
-    if (!all.length) return 0;
-    return all.reduce((a, b) => a + b.Expense, 0)
-  }
-
-
   return (
 
     <div className='app'>
-      <Form when={when} where={where} howMuch={howMuch} onHowMuch={setHowMuch} onWhen={setWhen} onWhere={setWhere} onSubmit={handleSubmit} />
-      <table className='table'>
-        <caption>Your Expense in {new Date().getFullYear().toString()} <button className='btn' onClick={clearing}>Clear All</button></caption>
-        
-        <thead >
-          <tr>
-            <th>Where</th>
-            <th>Date</th>
-            <th>Expense in $</th>
-          </tr>
-        </thead>
-        <tbody>
-          {all.map((el) =>
-            <tr key={el.id}>
-              <th scope='row'>{el.Where}</th>
-              <td>{el.When}</td>
-              <td>{el.Expense}</td>
-            </tr>)}
-        </tbody>
-        <tfoot>
-          <tr>
-            <th scope="row" colSpan={2}>All expense cost:</th>
+      <Form when={when} where={where} howMuch={howMuch} onHowMuch={setHowMuch} onWhen={setWhen} onWhere={setWhere} onSubmit={handleSubmit}>
+        <Inputs type={'date'} value={when} onSet={setWhen}>
+           What was the date?
+        </Inputs>
+        <Inputs type={'text'} value={where} onSet={setWhere}>
+          Where it was? 
+        </Inputs>
+        <Inputs type={'number'} value={howMuch} onSet={setHowMuch}>
+          How much did you spend?
+        </Inputs>
+      </Form>
 
-            <td>{sum(all)}</td>
-          </tr>
-        </tfoot>
+      < Table onSetAll={setAll} all={all}>
+        <Tbody all={all} />
+      </Table>
 
-      </table > 
-      <footer>&copy; Majzerek {new Date().getFullYear()} </footer>
     </div>
   );
-}
-
-
-function Form({ when, where, howMuch, onWhere, onWhen, onHowMuch, onSubmit }) {
-  return (
-    <div className='form'>
-      <h1>Expense Tracer ... </h1>
-      <form className='form_valid'onSubmit={onSubmit}>
-
-
-
-        <label>When you do purches?</label>
-            <input type="date" value={when} required onChange={(e) => onWhen(e.target.value)} />
-
-
-            <label>Where it was?</label>
-            <input type='text' required placeholder='Writte a place' value={where} onChange={(e) => onWhere(e.target.value)} />
-
-
-            <label>How much did you spend?</label>
-            <input type='number' required value={howMuch} placeholder='How much in $' onChange={(e) => onHowMuch(e.target.value)} />
-
-
-        <button className='btn btn_submit' type='submit'>Save</button>
-      </form>
-    </div>
-  )
 }
