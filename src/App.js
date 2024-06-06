@@ -26,7 +26,7 @@ export default function App({currency = '$'}) {
 
     if (!where || !when || !howMuch) return;
 
-    //seting new values
+    //setting new values
     setWhere(e.target.value);
     setWhen(e.target.value);
     setHowMuch(e.target.value);

@@ -20,8 +20,8 @@ export function Table({ children, onSetAll, all, currency }) {
             <tfoot>
                 <tr>
                     <th scope="row" colSpan={2}>All expense cost:</th>
-
-                    <td>{sum(all)}</td>
+                    {!all.length ? <td>waiting...</td> :
+                    <td>{sum(all)}{currency}</td>}
                 </tr>
             </tfoot>
 

@@ -5,7 +5,7 @@
 }
 :root{
   --body-bg-color: #382e2e;
-  --main-bg-color: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+  --main-bg-color: #319090;
   --table-bg-color:linear-gradient(325deg, #3f87a6, #ebf8e1, #f69d3c);
   --table-row-even-color: #ebf8e1;
   --table-row-odd-color:#ddbf9f;
@@ -139,17 +139,16 @@ form ul li {
 }
 footer {
   text-align: center;
-  margin-bottom: 2px;
+  margin-bottom: 15px;
   font-size: 1rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 940px) {
   .app {
     margin-top: auto;
     font-size: 1rem;
     width: 80%;
     height: 90%;
-   overflow: hidden;
    overflow: scroll;
   }
   .form_valid input {
@@ -159,7 +158,8 @@ footer {
     
   }
 .table {
-  margin: 5px;
+  margin: 5px auto;
+
 }
   
   .form_valid {
